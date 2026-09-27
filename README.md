@@ -4,6 +4,17 @@
 
 ---
 
+## 🎬 Demo & Live Link
+
+| | Link |
+|---|---|
+| **Demo Video** | [▶ Watch on YouTube](https://www.youtube.com/watch?v=LHtVTXXp1o4) |
+| **Live Deployment** | [🌐 jansahayak-multilingual-voice-agent.onrender.com](https://jansahayak-multilingual-voice-agent.onrender.com/) |
+
+> **Note on live testing:** The app is deployed on Render's free tier (US-East). Because of the 0.1 vCPU limit and transatlantic network latency, the live Render link drops WebSocket audio frames, causing VAD jitter and delayed barge-in. I have included a local demo video showing its true sub-second performance. For a flawless testing experience, I highly recommend running the provided Dockerfile locally.
+
+---
+
 ## Table of Contents
 
 1. [Key Architectural Highlights](#key-architectural-highlights)
