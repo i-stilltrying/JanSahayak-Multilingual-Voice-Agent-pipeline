@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JanSahayak — Citizen Voice Agent</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Header                                                             -->
+    <!-- ------------------------------------------------------------------ -->
+    <header class="gov-header">
+      <div>
+        <h1>जन<span>सहायक</span></h1>
+        <p class="subtitle">Multilingual Voice Agent for Citizen Scheme Advisory</p>
+      </div>
+      <div class="badge-tag"></div>
+    </header>
+
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Main Symmetrical Grid Layout                                       -->
+    <!-- ------------------------------------------------------------------ -->
+    <main class="app-layout">
+
+      <!-- LEFT COLUMN: Primary Voice Console -->
+      <section class="console-column">
+
+        <!-- Controls Card -->
+        <div class="card controls-card">
+
+          <!-- API Key input (reviewer mode) -->
+          <div class="api-key-row">
+            <label for="api-key-input" class="api-key-label">Sarvam API Key (Reviewer)</label>
+            <input
+              type="password"
+              id="api-key-input"
+              class="api-key-input"
+              placeholder="sk-…  (leave blank to use server key)"
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </div>
+
+          <div class="controls-row">
+            <button id="btn-start" class="btn btn-primary" aria-label="Start conversation">
+              🎙️ Start Conversation
+            </button>
+            <button id="btn-stop" class="btn btn-secondary" disabled aria-label="Stop conversation">
+              ⏹ Stop
+            </button>
+            <button id="btn-restart" class="btn btn-outline" aria-label="Clear and restart conversation">
+              🔄 Clear & Restart
+            </button>
+
+            <div class="status-pill" id="status-pill">
+              <span id="status-dot" class="dot dot-idle"></span>
+              <span id="status-text">Idle</span>
+            </div>
+
+            <div class="lang-pill" id="lang-badge">हिंदी</div>
+          </div>
+
+          <!-- Activity / Status Bar -->
+          <div class="activity-bar" id="activity-bar" hidden>
+            <span id="activity-icon">⏳</span>
+            <span id="activity-text">Initialising…</span>
+          </div>
+
+          <!-- Error Banner -->
+          <div id="error-banner" class="error-banner" hidden role="alert"></div>
+        </div>
+
+        <!-- Conversation Transcript Card -->
+        <div class="card transcript-card">
+          <div class="card-header">
+            <h2>Live Conversation Transcript</h2>
+          </div>
+          <div id="transcript" class="transcript" aria-live="polite" aria-atomic="false">
+            <div id="conversation-box" class="conversation-box">
+              <p class="placeholder">Click "Start Conversation" to begin...</p>
+            </div>
+          </div>
+
+          <!-- Live Tool Indicator -->
+          <div id="tool-activity" class="tool-activity live-tool-indicator" hidden aria-live="polite">
+            <span id="tool-activity-badge" class="tool-badge"></span>
+            <span id="tool-activity-text" class="tool-activity-text"></span>
+          </div>
+        </div>
+
+        <!-- Latency Metrics Card -->
+        <div class="card latency-card">
+          <div class="card-header">
+            <h2>Telemetry & Latency Breakdown</h2>
+          </div>
+          <table class="latency-table" aria-label="Latency metrics">
+            <thead>
+              <tr>
+                <th>Pipeline Stage</th>
+                <th>Latency (ms)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>STT (Speech-to-Text)</td><td id="lat-stt">—</td></tr>
+              <tr><td>LLM (Reasoning & Dispatch)</td><td id="lat-llm">—</td></tr>
+              <tr><td id="lat-tool-label">Tool Execution</td><td id="lat-tool">—</td></tr>
+              <tr><td>TTS (Text-to-Speech)</td><td id="lat-tts">—</td></tr>
+              <tr class="e2e-row"><td><strong>End-to-End TTFA</strong></td><td id="lat-e2e"><strong>—</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+      <!-- RIGHT COLUMN: Reviewer Evaluation Guide -->
+      <aside class="guide-column">
+        <div class="card guide-card">
+          <div class="guide-header">
+            <h2>Reviewer Evaluation Guide</h2>
+            <p>8-turn test suite validating all core voice agent capabilities</p>
+          </div>
+
+          <div class="test-steps-list">
+
+            <!-- Turn 1 -->
+            <div class="test-step">
+              <div class="step-meta">
+                <span class="step-num">1</span>
+                <span class="capability-tag tag-tool">Greeting & Tool Call</span>
+              </div>
+              <div class="test-prompt">"Tell me about PM Awas Yojana and what benefits it provides."</div>
+              <div class="step-hint">Validates proactive greeting, search_knowledge tool dispatch, and initial latency metrics.</div>
+            </div>
+
+            <!-- Turn 2 -->
+            <div class="test-step">
+              <div class="step-meta">
+                <span class="step-num">2</span>
+                <span class="capability-tag tag-barge">Barge-in & Lang Switch</span>
+              </div>
+              <div class="test-prompt"><em>[Interrupt while agent speaks]</em> "Mujhe Hindi mein samjhao."</div>
+              <div class="step-hint">Validates client barge-in detection, TTS abort, generation increment, and switch to hi-IN.</div>
+            </div>
+
+            <!-- Turn 3 -->
+            <div class="test-step">
+              <div class="step-meta">
+                <span class="step-num">3</span>
+                <span class="capability-tag tag-memory">Context Memory</span>
+              </div>
+              <div class="test-prompt">"Iske liye kaun-kaun se documents chahiye?"</div>
+              <div class="step-hint">Validates context persistence of PMAY without restating scheme name + get_required_documents.</div>
+            </div>
+
+            <!-- Turn 4 -->
+            <div class="test-step">
+              <div class="step-meta">
+                <span class="step-num">4</span>
+                <span class="capability-tag tag-switch">Cross-Scheme Switch</span>
+              </div>
+              <div class="test-prompt">"What are the eligibility criteria for PM-KISAN?"</div>
+              <div class="step-hint">Validates scheme context pivot, automatic language switch back to English, and check_eligibility.</div>
+            </div>
+
+            <!-- Turn 5 -->
+            <div class="test-step">
+              <div class="step-meta">
+                <span class="step-num">5</span>
+                <span class="capability-tag tag-code">Code-Mixing / Hinglish</span>
+              </div>
+              <div class="test-prompt">"MNREGA ka application form kaise bharte hain?"</div>
+              <div class="step-hint">Validates mixed-language STT parsing, Hindi response constraint, and get_application_steps.</div>
+            </div>
+
+            <!-- Turn 6 -->
+            <div class="test-step">
+              <div class="step-meta">
+                <span class="step-num">6</span>
+                <span class="capability-tag tag-tool">Entity Extraction</span>
+              </div>
+              <div class="test-prompt">"I want to check my application status. My ID is APP4."</div>
+              <div class="step-hint">Validates regex/slot extraction of application ID 'APP4' and get_application_status tool lookup.</div>
+            </div>
+
+            <!-- Turn 7 -->
+            <div class="test-step">
+              <div class="step-meta">
+                <span class="step-num">7</span>
+                <span class="capability-tag tag-memory">Scheme Reset & Hindi</span>
+              </div>
+              <div class="test-prompt">"Mujhe Atal Pension Yojana ke baare mein batao."</div>
+              <div class="step-hint">Validates workflow state reset, RAG search against Atal Pension knowledge, and Hindi Devanagari TTS.</div>
+            </div>
+
+            <!-- Turn 8 -->
+            <div class="test-step">
+              <div class="step-meta">
+                <span class="step-num">8</span>
+                <span class="capability-tag tag-tool">Callback Booking</span>
+              </div>
+              <div class="test-prompt">"I want to book an officer callback."</div>
+              <div class="step-hint">Validates date/time slot parsing, book_human_callback dispatch, and confirmation reference generation.</div>
+            </div>
+
+          </div>
+        </div>
+      </aside>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="gov-footer">
+      <p class="disclaimer">
+        JanSahayak Voice Agent Benchmark &bull; Powered by Sarvam AI
+      </p>
+      <p class="creator-tag">
+        Made with ❤️ by <a href="https://www.linkedin.com/in/aman-verma-0a89b8190/" target="_blank" rel="noopener noreferrer">Aman Verma</a>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- AudioWorklet processor is registered from app.js using addModule() -->
+  <!-- audio-playback.js must load before app.js so PlaybackQueue is defined -->
+  <script src="/static/audio-playback.js"></script>
+  <script src="/static/app.js" type="module"></script>
+</body>
+</html>

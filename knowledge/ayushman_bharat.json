@@ -1,0 +1,69 @@
+{
+  "scheme_id": "ayushman_bharat",
+  "scheme_name": "Ayushman Bharat PM-JAY",
+  "full_name": "Pradhan Mantri Jan Arogya Yojana",
+  "ministry": "Ministry of Health and Family Welfare",
+  "overview": "Ayushman Bharat PM-JAY (Pradhan Mantri Jan Arogya Yojana) is the world's largest government-funded health insurance scheme. It provides a health cover of ₹5 lakh per family per year for secondary and tertiary care hospitalisation to over 55 crore beneficiaries (approximately 12 crore poor and vulnerable families). The scheme was launched on September 23, 2018. All medical expenses for covered treatments — including medicines, diagnostics, and hospital stay — are borne by the scheme.",
+  "key_facts": [
+    "Health cover: ₹5 lakh per family per year",
+    "Applicable at: Over 29,000 empanelled government and private hospitals across India",
+    "Launched: September 23, 2018",
+    "Cashless and paperless treatment at all empanelled hospitals",
+    "Covers pre-existing diseases from Day 1",
+    "Covers over 1,929 treatment procedures",
+    "No cap on family size — entire family is covered",
+    "Administered by: National Health Authority (NHA)"
+  ],
+  "eligibility": {
+    "description": "Eligibility is based on Socio-Economic Caste Census (SECC) 2011 data. Families listed as deprived in SECC-2011 (rural and urban) automatically qualify.",
+    "required_slots": ["secc_listed", "state"],
+    "rules": [
+      {
+        "rule_id": "secc_inclusion",
+        "description": "Family must be listed in SECC-2011 deprivation/occupational categories",
+        "field": "secc_listed",
+        "required_value": "yes"
+      }
+    ],
+    "how_to_check": "Check eligibility at pmjay.gov.in → Am I Eligible, or by calling 14555, or at the nearest Common Service Centre."
+  },
+  "documents": [
+    "Aadhaar card or any other government-issued ID proof",
+    "Ration card (may be required for some states)",
+    "Mobile number linked to Aadhaar",
+    "No separate application needed — if listed in SECC-2011, you are automatically enrolled"
+  ],
+  "application_steps": [
+    "Step 1: Check your eligibility at pmjay.gov.in → 'Am I Eligible' section",
+    "Step 2: If eligible, visit the nearest Common Service Centre (CSC) or Ayushman Mitra at an empanelled hospital",
+    "Step 3: Provide your Aadhaar and mobile number for e-KYC verification",
+    "Step 4: Receive your Ayushman Bharat card (also called Golden Card)",
+    "Step 5: Use the card at any empanelled hospital for cashless treatment"
+  ],
+  "faqs": [
+    {
+      "question": "How do I get an Ayushman Bharat card?",
+      "answer": "Visit your nearest Common Service Centre (CSC), Ayushman Mitra at an empanelled hospital, or generate the card online at beneficiary.nha.gov.in using your Aadhaar."
+    },
+    {
+      "question": "What is covered under PM-JAY?",
+      "answer": "The scheme covers over 1,929 medical and surgical procedures including cancer treatment, cardiac surgeries, kidney transplant, orthopaedic procedures, and more. It also covers diagnostics, medicines, and pre/post hospitalisation expenses for up to 15 days."
+    },
+    {
+      "question": "Can I use it at private hospitals?",
+      "answer": "Yes, you can use it at any empanelled private or government hospital across India. Check the list at hospitals.pmjay.gov.in."
+    },
+    {
+      "question": "Is there any income limit?",
+      "answer": "There is no separate income limit. Eligibility is purely based on SECC-2011 data. If your family is listed, you are eligible."
+    }
+  ],
+  "keywords": [
+    "ayushman bharat", "pm-jay", "pmjay", "pradhan mantri jan arogya yojana",
+    "health insurance", "5 lakh health cover", "golden card", "ayushman card",
+    "free hospital treatment", "health scheme", "jan arogya", "health coverage"
+  ],
+  "official_source_url": "https://pmjay.gov.in",
+  "source_name": "PM-JAY Official Portal",
+  "last_verified": "2025-09-25"
+}

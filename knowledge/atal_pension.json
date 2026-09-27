@@ -1,0 +1,72 @@
+{
+  "scheme_id": "atal_pension",
+  "scheme_name": "Atal Pension Yojana",
+  "full_name": "Atal Pension Yojana",
+  "ministry": "Ministry of Finance, administered by PFRDA",
+  "overview": "Atal Pension Yojana (APY) is a government-backed pension scheme primarily targeted at workers in the unorganised sector. It is administered by the Pension Fund Regulatory and Development Authority (PFRDA). Subscribers who join APY at different ages receive a guaranteed pension of ₹1,000, ₹2,000, ₹3,000, ₹4,000, or ₹5,000 per month after attaining the age of 60 years, depending on their contributions. The scheme was launched on June 1, 2015.",
+  "key_facts": [
+    "Guaranteed pension: ₹1,000 to ₹5,000 per month after age 60",
+    "Minimum age to join: 18 years; Maximum age: 40 years",
+    "Contribution period: at least 20 years",
+    "On subscriber's death, spouse gets the same pension, then nominee gets the corpus",
+    "Tax benefit: Contributions are eligible for deduction under Section 80CCD(1) of Income Tax Act",
+    "Launched: June 1, 2015",
+    "Administered by: PFRDA (Pension Fund Regulatory and Development Authority)",
+    "Government co-contribution: 50% of total contribution or ₹1,000 per year (whichever is lower) for 5 years for those who joined between 2015-2020 and were not income tax payers"
+  ],
+  "eligibility": {
+    "description": "Indian citizens between 18 and 40 years of age with a bank account are eligible.",
+    "required_slots": ["age", "bank_account", "income_tax_status"],
+    "rules": [
+      {
+        "rule_id": "age_18_to_40",
+        "description": "Subscriber must be between 18 and 40 years of age",
+        "field": "age",
+        "min_value": 18,
+        "max_value": 40
+      },
+      {
+        "rule_id": "must_have_bank_account",
+        "description": "Must have a savings bank account",
+        "field": "bank_account",
+        "required_value": "yes"
+      }
+    ],
+    "notes": "Income tax payers are not eligible for the government co-contribution benefit. However, they can still subscribe to APY."
+  },
+  "documents": [
+    "Aadhaar card",
+    "Savings bank account (with mobile number linked)",
+    "Mobile number for OTP verification"
+  ],
+  "application_steps": [
+    "Step 1: Visit your nearest bank branch or use net banking",
+    "Step 2: Fill the APY subscriber registration form (physical or online)",
+    "Step 3: Provide your Aadhaar, mobile number, and bank account details",
+    "Step 4: Choose your desired monthly pension amount (₹1,000 to ₹5,000)",
+    "Step 5: Set up auto-debit from your bank account for monthly contributions",
+    "Step 6: You will receive a PRAN (Permanent Retirement Account Number) as confirmation"
+  ],
+  "faqs": [
+    {
+      "question": "How much do I need to contribute for ₹5,000 pension?",
+      "answer": "The contribution depends on your age when you join. For example, if you join at 18, you contribute ₹210/month; at 25, ₹376/month; at 30, ₹577/month; at 35, ₹902/month. Earlier you join, lower your contribution."
+    },
+    {
+      "question": "What happens if I cannot pay the contribution?",
+      "answer": "If you miss contributions, a penalty of ₹1/month per ₹100 contribution is charged. After 6 months of default, the account is frozen; after 12 months, deactivated; after 24 months, closed and the balance returned."
+    },
+    {
+      "question": "Can I exit APY before age 60?",
+      "answer": "Voluntary exit is allowed. If the government co-contribution was received, it will be deducted. In case of terminal illness or death before 60, the full corpus is returned to the nominee."
+    }
+  ],
+  "keywords": [
+    "atal pension yojana", "apy", "pension scheme", "retirement scheme",
+    "unorganised sector pension", "pfrda", "monthly pension", "guaranteed pension",
+    "atal pension", "old age pension", "retirement plan"
+  ],
+  "official_source_url": "https://npscra.nsdl.co.in/scheme-details.php",
+  "source_name": "PFRDA / NSDL APY Portal",
+  "last_verified": "2025-09-25"
+}

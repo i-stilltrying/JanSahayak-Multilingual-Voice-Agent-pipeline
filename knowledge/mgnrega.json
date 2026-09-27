@@ -1,0 +1,77 @@
+{
+  "scheme_id": "mgnrega",
+  "scheme_name": "MGNREGA",
+  "full_name": "Mahatma Gandhi National Rural Employment Guarantee Act",
+  "ministry": "Ministry of Rural Development",
+  "overview": "MGNREGA (Mahatma Gandhi National Rural Employment Guarantee Act) is a flagship employment guarantee scheme that provides at least 100 days of guaranteed wage employment per financial year to every rural household whose adult members volunteer to do unskilled manual work. The scheme was notified in February 2006. It provides employment at the statutory minimum wage rate for the state. If employment is not provided within 15 days of demand, an unemployment allowance must be paid. Work is demand-driven and the focus is on creating durable rural assets.",
+  "key_facts": [
+    "Guarantees: 100 days of wage employment per household per financial year",
+    "Wage rate: As per state minimum wage rates (varies by state)",
+    "Work must be provided within 15 days of demand; else unemployment allowance is paid",
+    "Payment: Through bank/post office accounts within 15 days of work completion",
+    "Work radius: Must be within 5 km of the applicant's village",
+    "Launched: February 2006 (notified), April 2008 (nationwide coverage)",
+    "Managed by: Ministry of Rural Development",
+    "Portal: nrega.nic.in"
+  ],
+  "eligibility": {
+    "description": "Any adult member of a rural household who is willing to do unskilled manual work can apply.",
+    "required_slots": ["residence_type", "willingness_for_manual_work"],
+    "rules": [
+      {
+        "rule_id": "rural_household",
+        "description": "Applicant must belong to a rural household",
+        "field": "residence_type",
+        "required_value": "rural"
+      },
+      {
+        "rule_id": "adult_member",
+        "description": "Must be an adult (18 years or above)",
+        "field": "age",
+        "min_value": 18
+      }
+    ],
+    "notes": "Urban households are not eligible. Any number of adult members of the same family can apply, but the total household entitlement is capped at 100 days per year."
+  },
+  "documents": [
+    "Aadhaar card",
+    "Proof of residence in rural area",
+    "Bank or post office account details",
+    "Passport-size photograph",
+    "Job Card — issued by the Gram Panchayat after registration"
+  ],
+  "application_steps": [
+    "Step 1: Submit a written application to your Gram Panchayat requesting registration",
+    "Step 2: The Gram Panchayat verifies the application and issues a Job Card within 15 days",
+    "Step 3: When you need work, submit a written demand for employment to the Gram Panchayat",
+    "Step 4: Employment must be provided within 15 days of your demand",
+    "Step 5: Work allocation will be for at least 14 days continuously",
+    "Step 6: Wages are credited to your bank/post office account within 15 days of work completion"
+  ],
+  "faqs": [
+    {
+      "question": "What is a Job Card?",
+      "answer": "A Job Card is a document issued by the Gram Panchayat to registered MGNREGA workers. It contains the worker's photograph, household details, and records all employment demanded and provided. It is the key document for availing MGNREGA benefits."
+    },
+    {
+      "question": "What if I don't get work within 15 days?",
+      "answer": "If work is not provided within 15 days of your demand, you are entitled to an unemployment allowance — 25% of the wage rate for the first 30 days and 50% thereafter, payable by the state government."
+    },
+    {
+      "question": "How much will I earn?",
+      "answer": "The wage rate varies by state as per the state Minimum Wage Act. As of 2025, wages range approximately from ₹220 to ₹374 per day across different states."
+    },
+    {
+      "question": "Can I apply online?",
+      "answer": "Application for Job Card is made at the Gram Panchayat. You can track work and payments online at nrega.nic.in using your Job Card number."
+    }
+  ],
+  "keywords": [
+    "mgnrega", "nrega", "mahatma gandhi rural employment", "100 days work",
+    "job card", "rural employment guarantee", "unskilled work", "gram panchayat work",
+    "mnrega", "rural job scheme", "employment guarantee"
+  ],
+  "official_source_url": "https://nrega.nic.in",
+  "source_name": "MGNREGA Official Portal",
+  "last_verified": "2025-09-25"
+}

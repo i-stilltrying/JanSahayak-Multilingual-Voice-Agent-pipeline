@@ -1,0 +1,337 @@
+[
+  {
+    "scenario_id": "SCEN_01_PM_KISAN_FAQ_HI",
+    "name": "PM-KISAN general overview in Hindi",
+    "description": "User asks basic PM-KISAN amount and benefits in Hindi.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "PM किसान योजना में कितना पैसा मिलता है?",
+        "input_language": "hi-IN",
+        "expected_tool": "search_knowledge",
+        "expected_tool_args": {"query": "PM किसान", "scheme": "pm_kisan"},
+        "expected_workflow": "SCHEME_DISCOVERY",
+        "expected_keywords": ["₹6,000", "2,000", "किस्त"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_02_AYUSHMAN_BHARAT_OVERVIEW_EN",
+    "name": "Ayushman Bharat benefit overview in English",
+    "description": "User inquires about Ayushman Bharat health insurance cover limit.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "What is the maximum coverage under Ayushman Bharat scheme?",
+        "input_language": "en-IN",
+        "expected_tool": "search_knowledge",
+        "expected_tool_args": {"scheme": "ayushman_bharat"},
+        "expected_workflow": "SCHEME_DISCOVERY",
+        "expected_keywords": ["5 lakh", "hospital"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_03_PM_KISAN_ELIGIBILITY_MULTITURN",
+    "name": "PM-KISAN eligibility multi-turn slot collection",
+    "description": "Multi-turn eligibility check where user provides land size, institutional ownership, and tax status.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "Can I get PM Kisan money? I have 1.5 hectares of farmland.",
+        "input_language": "en-IN",
+        "expected_tool": "check_eligibility",
+        "expected_tool_args": {"scheme_id": "pm_kisan", "provided_slots": {"land_ownership_hectares": 1.5}},
+        "expected_workflow": "ELIGIBILITY",
+        "expected_keywords": ["tax", "institutional"]
+      },
+      {
+        "turn": 2,
+        "user_input": "No, I do not pay income tax and it is personal farmland, not institutional.",
+        "input_language": "en-IN",
+        "expected_tool": "check_eligibility",
+        "expected_tool_args": {
+          "scheme_id": "pm_kisan",
+          "provided_slots": {
+            "pays_income_tax": false,
+            "is_institutional_landholder": false
+          }
+        },
+        "expected_workflow": "ELIGIBILITY",
+        "expected_keywords": ["eligible", "6,000"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_04_PM_KISAN_INELIGIBLE_TAX",
+    "name": "PM-KISAN ineligibility due to income tax",
+    "description": "User owns land but pays income tax, rendering them ineligible.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "I own 3 hectares of farm land and I pay income tax. Am I eligible for PM Kisan?",
+        "input_language": "en-IN",
+        "expected_tool": "check_eligibility",
+        "expected_tool_args": {
+          "scheme_id": "pm_kisan",
+          "provided_slots": {
+            "land_ownership_hectares": 3.0,
+            "pays_income_tax": true
+          }
+        },
+        "expected_workflow": "ELIGIBILITY",
+        "expected_keywords": ["not eligible", "tax"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_05_AYUSHMAN_DOCUMENTS_KN",
+    "name": "Ayushman Bharat documents in Kannada",
+    "description": "User asks for documents required for Ayushman Bharat in Kannada.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "ಆಯುಷ್ಮಾನ್ ಭಾರತ್ ಕಾರ್ಡ್ ಪಡೆಯಲು ಯಾವ ದಾಖಲೆಗಳು ಬೇಕು?",
+        "input_language": "kn-IN",
+        "expected_tool": "get_required_documents",
+        "expected_tool_args": {"scheme_id": "ayushman_bharat"},
+        "expected_workflow": "DOCUMENTS",
+        "expected_keywords": ["Aadhaar", "ಆಧಾರ್"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_06_PM_AWAS_APPLICATION_STEPS_HI",
+    "name": "PM Awas Yojana application steps in Hindi",
+    "description": "User asks how to apply for PM Awas Yojana.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "प्रधानमंत्री आवास योजना के लिए आवेदन कैसे करें?",
+        "input_language": "hi-IN",
+        "expected_tool": "get_application_steps",
+        "expected_tool_args": {"scheme_id": "pm_awas"},
+        "expected_workflow": "APPLICATION",
+        "expected_keywords": ["pmaymis.gov.in", "आवेदन", "Gram Panchayat"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_07_APPLICATION_STATUS_LOOKUP",
+    "name": "Application status tracking reference",
+    "description": "User checks existing application status with tracking ID.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "Check my application status for APP-12345 please.",
+        "input_language": "en-IN",
+        "expected_tool": "get_application_status",
+        "expected_tool_args": {"application_id": "APP-12345"},
+        "expected_workflow": "APPLICATION_STATUS",
+        "expected_keywords": ["Under Review", "PM-KISAN"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_08_APPLICATION_STATUS_NOT_FOUND",
+    "name": "Application status invalid tracking ID",
+    "description": "User provides an unknown application tracking ID.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "What is the status of application APP-99999?",
+        "input_language": "en-IN",
+        "expected_tool": "get_application_status",
+        "expected_tool_args": {"application_id": "APP-99999"},
+        "expected_workflow": "APPLICATION_STATUS",
+        "expected_keywords": ["No application record", "APP-99999"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_09_CALLBACK_BOOKING_WORKFLOW",
+    "name": "Callback slots retrieval and booking",
+    "description": "User asks for a human callback, retrieves slots, then confirms booking.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "I want to speak to a human officer. What slots are available?",
+        "input_language": "en-IN",
+        "expected_tool": "get_callback_slots",
+        "expected_tool_args": {},
+        "expected_workflow": "CALLBACK",
+        "expected_keywords": ["available", "AM", "PM"]
+      },
+      {
+        "turn": 2,
+        "user_input": "Please book the 10:00 AM slot for today in Hindi.",
+        "input_language": "en-IN",
+        "expected_tool": "book_human_callback",
+        "expected_tool_args": {"time_slot": "10:00 AM", "language": "hi-IN"},
+        "expected_workflow": "CALLBACK",
+        "expected_keywords": ["CBK-", "confirmed"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_10_LANGUAGE_SWITCH_HI_TO_EN",
+    "name": "Explicit language switch Hindi to English with context retention",
+    "description": "User asks in Hindi about PM-KISAN, switches to English, and expects scheme context preserved.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "पीएम किसान योजना के बारे में बताएं।",
+        "input_language": "hi-IN",
+        "expected_tool": "search_knowledge",
+        "expected_tool_args": {"scheme": "pm_kisan"},
+        "expected_workflow": "SCHEME_DISCOVERY",
+        "expected_keywords": ["6,000", "किसान"]
+      },
+      {
+        "turn": 2,
+        "user_input": "Please switch to English and tell me what documents are needed.",
+        "input_language": "en-IN",
+        "expected_tool": "set_language",
+        "expected_tool_args": {"language_code": "en-IN"},
+        "expected_workflow": "SCHEME_DISCOVERY",
+        "expected_keywords": ["English", "documents"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_11_LANGUAGE_SWITCH_EN_TO_KN",
+    "name": "Explicit language switch English to Kannada",
+    "description": "User requests switching response language to Kannada.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "Please talk to me in Kannada from now on.",
+        "input_language": "en-IN",
+        "expected_tool": "set_language",
+        "expected_tool_args": {"language_code": "kn-IN"},
+        "expected_workflow": "NONE",
+        "expected_keywords": ["ಕನ್ನಡ", "ಸ್ವಾಗತ"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_12_HINGLISH_CODE_MIXING",
+    "name": "Hinglish code-mixing without language switch",
+    "description": "User asks question in mixed Hindi-English (Hinglish); agent should answer without triggering set_language.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "Mujhe Atal Pension Yojana ka minimum age criteria batao please.",
+        "input_language": "hi-IN",
+        "expected_tool": "search_knowledge",
+        "expected_tool_args": {"scheme": "atal_pension"},
+        "expected_workflow": "SCHEME_DISCOVERY",
+        "expected_keywords": ["18", "40", "वर्ष"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_13_ATAL_PENSION_ELIGIBILITY",
+    "name": "Atal Pension Yojana eligibility check",
+    "description": "User provides age 25 and has bank account; checks APY eligibility.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "I am 25 years old and I have a savings bank account. Can I join Atal Pension Yojana?",
+        "input_language": "en-IN",
+        "expected_tool": "check_eligibility",
+        "expected_tool_args": {
+          "scheme_id": "atal_pension",
+          "provided_slots": {"age": 25, "has_savings_bank_account": true}
+        },
+        "expected_workflow": "ELIGIBILITY",
+        "expected_keywords": ["eligible", "1,000", "5,000"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_14_MGNREGA_ELIGIBILITY_RURAL",
+    "name": "MGNREGA 100-day wage work eligibility",
+    "description": "User from rural area willing to do manual work checks MGNREGA eligibility.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "I live in a village, I am 30 years old and willing to do manual labour. Am I eligible for MGNREGA?",
+        "input_language": "en-IN",
+        "expected_tool": "check_eligibility",
+        "expected_tool_args": {
+          "scheme_id": "mgnrega",
+          "provided_slots": {
+            "is_rural_household": true,
+            "age": 30,
+            "willing_for_manual_work": true
+          }
+        },
+        "expected_workflow": "ELIGIBILITY",
+        "expected_keywords": ["eligible", "100 days"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_15_OUT_OF_SCOPE_QUERY",
+    "name": "Out of scope / unsupported query",
+    "description": "User asks about passport renewal or income tax filing which is out of scope.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "How do I renew my passport online in India?",
+        "input_language": "en-IN",
+        "expected_tool": null,
+        "expected_workflow": "NONE",
+        "expected_keywords": ["scope", "JanSahayak", "scheme"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_16_GREETING_NO_TOOL",
+    "name": "Conversational greeting",
+    "description": "User greets JanSahayak; no tool call should be made.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "Namaste! Kaise ho aap?",
+        "input_language": "hi-IN",
+        "expected_tool": null,
+        "expected_workflow": "NONE",
+        "expected_keywords": ["नमस्ते", "सहायता"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_17_PM_AWAS_DOCUMENTS_EN",
+    "name": "PM Awas Yojana required documents",
+    "description": "User asks for documents required for PM Awas housing assistance.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "What documents do I need to submit for PM Awas Yojana?",
+        "input_language": "en-IN",
+        "expected_tool": "get_required_documents",
+        "expected_tool_args": {"scheme_id": "pm_awas"},
+        "expected_workflow": "DOCUMENTS",
+        "expected_keywords": ["Aadhaar", "Income"]
+      }
+    ]
+  },
+  {
+    "scenario_id": "SCEN_18_MGNREGA_APPLICATION_STEPS",
+    "name": "MGNREGA Job Card application process",
+    "description": "User asks how to get a MGNREGA Job Card at the Gram Panchayat.",
+    "turns": [
+      {
+        "turn": 1,
+        "user_input": "MGNREGA Job Card kaise banwayen?",
+        "input_language": "hi-IN",
+        "expected_tool": "get_application_steps",
+        "expected_tool_args": {"scheme_id": "mgnrega"},
+        "expected_workflow": "APPLICATION",
+        "expected_keywords": ["Gram Panchayat", "Job Card", "आवेदन"]
+      }
+    ]
+  }
+]

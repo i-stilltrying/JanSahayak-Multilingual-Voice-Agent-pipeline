@@ -1,0 +1,73 @@
+{
+  "scheme_id": "pm_awas",
+  "scheme_name": "PM Awas Yojana",
+  "full_name": "Pradhan Mantri Awas Yojana",
+  "ministry": "Ministry of Housing and Urban Affairs / Ministry of Rural Development",
+  "overview": "Pradhan Mantri Awas Yojana (PMAY) is a government initiative aimed at providing affordable housing to all eligible citizens by 2024. It has two components: PMAY-Urban (PMAY-U) for urban beneficiaries and PMAY-Gramin (PMAY-G) for rural beneficiaries. The scheme provides financial assistance to construct or buy a house. Under PMAY-U, beneficiaries receive an interest subsidy on home loans (Credit Linked Subsidy Scheme - CLSS), or a central grant of ₹1.5 lakh for in-situ slum redevelopment and affordable housing. Under PMAY-G, rural beneficiaries receive ₹1.20 lakh (plains) or ₹1.30 lakh (hilly/North East/tribal areas) as housing grant.",
+  "key_facts": [
+    "PMAY-Gramin grant: ₹1.20 lakh in plains, ₹1.30 lakh in hilly/NE/tribal regions",
+    "PMAY-Urban CLSS: Interest subsidy of up to 6.5% on home loans for EWS/LIG, 4% for MIG-I, 3% for MIG-II",
+    "Beneficiary must not own a pucca house anywhere in India",
+    "Administered by: Ministry of Housing and Urban Affairs (Urban) and Ministry of Rural Development (Rural)",
+    "Registration: pmaymis.gov.in (Urban), pmayg.nic.in (Rural)"
+  ],
+  "eligibility": {
+    "description": "Eligibility differs for urban and rural components and income groups.",
+    "required_slots": ["location_type", "income_category", "house_ownership"],
+    "rules": [
+      {
+        "rule_id": "no_existing_pucca_house",
+        "description": "Applicant or any family member must not own a pucca house anywhere in India",
+        "field": "house_ownership",
+        "required_value": "none"
+      }
+    ],
+    "income_categories": {
+      "EWS": "Economically Weaker Section — Annual income up to ₹3 lakh",
+      "LIG": "Low Income Group — Annual income ₹3 lakh to ₹6 lakh",
+      "MIG-I": "Middle Income Group I — Annual income ₹6 lakh to ₹12 lakh",
+      "MIG-II": "Middle Income Group II — Annual income ₹12 lakh to ₹18 lakh"
+    }
+  },
+  "documents": [
+    "Aadhaar card (mandatory for all family members)",
+    "Income certificate / Salary slip",
+    "Proof of residence (voter ID, ration card)",
+    "Bank account details",
+    "Passport-size photographs",
+    "Caste certificate (for SC/ST/OBC if applicable)",
+    "Disability certificate (if applicable)",
+    "For CLSS: Loan sanction letter from bank"
+  ],
+  "application_steps": [
+    "Step 1: Visit pmaymis.gov.in (Urban) or your Gram Panchayat (Rural)",
+    "Step 2: For Urban — click 'Citizen Assessment' and select your category",
+    "Step 3: Enter your Aadhaar number for verification",
+    "Step 4: Fill in family, income, and housing details",
+    "Step 5: Submit the application — a unique Application ID will be generated",
+    "Step 6: For CLSS, approach an empanelled Primary Lending Institution (PLI) bank",
+    "Step 7: Track application status at pmaymis.gov.in using your Application ID"
+  ],
+  "faqs": [
+    {
+      "question": "What is the difference between PMAY-Urban and PMAY-Gramin?",
+      "answer": "PMAY-Urban is for people living in urban areas and provides interest subsidy on home loans (CLSS) or direct grants. PMAY-Gramin (PMAY-G) is for rural areas and provides a direct cash grant of ₹1.20-1.30 lakh to construct a house."
+    },
+    {
+      "question": "Can I apply if I already have a house?",
+      "answer": "No. If you or any member of your family owns a pucca house anywhere in India, you are not eligible for PMAY."
+    },
+    {
+      "question": "How much interest subsidy will I get?",
+      "answer": "EWS/LIG: 6.5% subsidy on loans up to ₹6 lakh. MIG-I: 4% on loans up to ₹9 lakh. MIG-II: 3% on loans up to ₹12 lakh."
+    }
+  ],
+  "keywords": [
+    "pm awas", "pmay", "pradhan mantri awas yojana", "housing scheme",
+    "affordable housing", "pucca house", "clss", "home loan subsidy",
+    "gramin awas", "urban housing", "awas yojana", "house construction grant"
+  ],
+  "official_source_url": "https://pmaymis.gov.in",
+  "source_name": "PMAY Official Portal",
+  "last_verified": "2025-09-25"
+}

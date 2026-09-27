@@ -1,0 +1,27 @@
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+
+# Python & Virtual Environments
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+
+# Local Databases & Logs
+callbacks.db
+*.db
+*.log
+logs/
+
+# OS & IDE Artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

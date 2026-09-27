@@ -1,0 +1,77 @@
+{
+  "scheme_id": "pm_kisan",
+  "scheme_name": "PM-KISAN",
+  "full_name": "Pradhan Mantri Kisan Samman Nidhi",
+  "ministry": "Ministry of Agriculture and Farmers Welfare",
+  "overview": "PM-KISAN (Pradhan Mantri Kisan Samman Nidhi) is a Central Government scheme that provides direct income support of ₹6,000 per year to all landholding farmer families across the country. The amount is paid in three equal instalments of ₹2,000 every four months directly into the bank accounts of eligible farmers through Direct Benefit Transfer (DBT). The scheme was launched on February 24, 2019.",
+  "key_facts": [
+    "Annual benefit: ₹6,000 per year (₹2,000 per instalment, three instalments)",
+    "Mode of payment: Direct Benefit Transfer (DBT) to farmer's bank account",
+    "Launched: February 24, 2019",
+    "Administered by: Ministry of Agriculture and Farmers Welfare",
+    "Registration portal: pmkisan.gov.in",
+    "Beneficiaries must have valid Aadhaar and a bank account linked to it",
+    "Over 11 crore farmer families have been enrolled as of 2024"
+  ],
+  "eligibility": {
+    "description": "All landholding farmer families who have cultivable land in their name are eligible, subject to exclusion criteria.",
+    "required_slots": ["state", "land_ownership", "income_source", "government_employee"],
+    "rules": [
+      {
+        "rule_id": "must_own_land",
+        "description": "The farmer family must own cultivable land registered in their name",
+        "field": "land_ownership",
+        "required_value": "yes"
+      }
+    ],
+    "exclusions": [
+      "Institutional land holders",
+      "Farmer families holding constitutional posts",
+      "Serving or retired officers and employees of Central/State Government Ministries (excluding Multi-Tasking Staff/Class IV/Group D employees)",
+      "All superannuated/retired pensioners who receive a monthly pension of ₹10,000 or more",
+      "Persons who paid income tax in the last assessment year",
+      "Professionals like doctors, engineers, lawyers, chartered accountants and architects registered with professional bodies"
+    ]
+  },
+  "documents": [
+    "Aadhaar card (mandatory)",
+    "Land ownership documents / Khasra-Khatauni (land record)",
+    "Bank account details (account number and IFSC code)",
+    "Mobile number linked to Aadhaar",
+    "Passport-size photograph"
+  ],
+  "application_steps": [
+    "Step 1: Visit pmkisan.gov.in or your nearest Common Service Centre (CSC)",
+    "Step 2: Click on 'Farmer Corner' and then 'New Farmer Registration'",
+    "Step 3: Enter your Aadhaar number, select your state, and submit",
+    "Step 4: Fill in personal, bank, and land details",
+    "Step 5: Submit the form — registration will be verified by the state government",
+    "Step 6: After approval, the first instalment will be credited to your bank account"
+  ],
+  "faqs": [
+    {
+      "question": "How can I check my PM-KISAN payment status?",
+      "answer": "Visit pmkisan.gov.in → Farmer Corner → Beneficiary Status. Enter your Aadhaar, Account Number, or Mobile Number to check your payment status."
+    },
+    {
+      "question": "What if my instalment has not been credited?",
+      "answer": "Ensure your Aadhaar is linked to your bank account and your bank account details are correct. You can raise a grievance at pmkisan.gov.in or contact the PM-KISAN helpline at 155261 or 011-24300606."
+    },
+    {
+      "question": "Can tenant farmers apply for PM-KISAN?",
+      "answer": "No. The scheme is only for landholding farmer families. Tenant farmers who do not own land are not eligible."
+    },
+    {
+      "question": "Is there a family limit?",
+      "answer": "Yes. The benefit is for the entire farmer family (husband, wife, and minor children). Only one member per family is eligible."
+    }
+  ],
+  "keywords": [
+    "pm kisan", "pm-kisan", "pmkisan", "kisan samman nidhi", "farmer scheme",
+    "6000 rupees", "farmer income support", "kisan benefit", "agricultural scheme",
+    "pradhan mantri kisan", "farmer family income", "kisan registration"
+  ],
+  "official_source_url": "https://pmkisan.gov.in",
+  "source_name": "PM-KISAN Official Portal",
+  "last_verified": "2025-09-25"
+}
